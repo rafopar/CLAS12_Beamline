@@ -74,7 +74,7 @@ void Draw_calibr()
 
     gr_SLM_Fcup_ratio_bbout->SetPoint(i, IFcup, SLM_FCUP_ratio);
     
-    if( IPM2C24A >  0.9*IFcup && IPM2C24A <  1.1*IFcup ){
+    if( IPM2C24A > 0.9*IFcup && IPM2C24A < 1.1*IFcup ){
       gr_2c24_Fcup_bbout->SetPoint(ind_2c24, IFcup, IPM2C24A);
       h_2C24_fCup_ratio1->Fill(IPM2C24A/IFcup);
       gr_2c24_Fcup_ratio_bbout->SetPoint(ind_2c24, IFcup, IPM2C24A/IFcup);

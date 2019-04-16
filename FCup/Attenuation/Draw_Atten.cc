@@ -4,12 +4,14 @@ void Draw_Atten(){
 
   TCanvas *c1 = new TCanvas("c1", "",  1800, 900);
   
-  const int n_CLAS12_points = 5;
+  const int n_CLAS12_points = 7;
   const int n_old_points = 2;
   const int n_GEANT_points = 3;
 
-  double Eb_CLAS12[n_CLAS12_points] = {6.4, 6.6, 10.7, 7.5, 10.2};
-  double atten_CLAS12[n_CLAS12_points] = {16.283, 16.23795, 9.8088, 14.895650, 9.9652500};
+  double Eb_CLAS12[n_CLAS12_points] = {6.4, 6.6, 10.7, 7.54, 10.2, 10.19, 10.21};
+  double atten_CLAS12[n_CLAS12_points] = {16.9726, 16.23795, 9.80875, 14.895650, 9.96025, 9.9193, 9.99085 };
+  double E_Beam_Err[n_CLAS12_points] = {0., 0., 0., 0., 0., 0., 0.};
+  double atten_Err_CLAS12[n_CLAS12_points] = {0.0095, 0.00675, 0.00055, 0.02115, 0.00795, 0.0135, 0.00635};
 
   double Eb_old[n_old_points] = {2.3, 6.};
   double atten_old[n_old_points] = {1./0.015, 1./0.049};
@@ -18,10 +20,10 @@ void Draw_Atten(){
   double atten_G3[n_GEANT_points] = {1./0.009, 1./0.042, 1./0.09};
 
 
-  TGraph *gr_CL12 = new TGraph(n_CLAS12_points, Eb_CLAS12, atten_CLAS12);
+  TGraphErrors *gr_CL12 = new TGraphErrors(n_CLAS12_points, Eb_CLAS12, atten_CLAS12, E_Beam_Err, atten_Err_CLAS12);
   gr_CL12->SetMarkerColor(4);
   gr_CL12->SetMarkerStyle(22);
-  gr_CL12->SetMarkerSize(2);
+  gr_CL12->SetMarkerSize(1.2);
 
   TGraph *gr_old = new TGraph(n_old_points, Eb_old, atten_old);
   gr_old->SetMarkerColor(2);
