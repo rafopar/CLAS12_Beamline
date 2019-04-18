@@ -19,6 +19,8 @@ void Draw_Atten(){
   double Eb_G3[n_GEANT_points] = {2.3, 6., 11.};
   double atten_G3[n_GEANT_points] = {1./0.009, 1./0.042, 1./0.09};
 
+  TLatex *lat1 = new TLatex();
+  lat1->SetNDC();
 
   TGraphErrors *gr_CL12 = new TGraphErrors(n_CLAS12_points, Eb_CLAS12, atten_CLAS12, E_Beam_Err, atten_Err_CLAS12);
   gr_CL12->SetMarkerColor(4);
@@ -53,11 +55,35 @@ void Draw_Atten(){
 
 
   c1->Clear();
+  c1->SetTopMargin(0.02);
+  c1->SetRightMargin(0.02);
+  c1->SetLeftMargin(0.05);
   TMultiGraph *mtgr_Data = new TMultiGraph();
   mtgr_Data->Add(gr_CL12);
   mtgr_Data->Add(gr_old);
   mtgr_Data->Draw("AP");
   mtgr_Data->SetTitle("; E_{b} [GeV]; Attenuation");
+  mtgr_Data->GetYaxis()->SetTitleOffset(0.6);
+  c1->Print("Atten_Measurements.eps");
+  c1->Print("Atten_Measurements.pdf");
+  c1->Print("Atten_Measurements.png");
+
+  mtgr_Data->GetXaxis()->SetLimits(6.2, 11);
+  mtgr_Data->SetMaximum(17.2);
+  mtgr_Data->SetMinimum(9.6);
+  lat1->SetTextColor(4);
+  lat1->SetTextSize(0.03);
+  lat1->DrawLatex(0.105, 0.94, "Dec 13 2018");
+  lat1->DrawLatex(0.145, 0.86, "Feb 7 2018");
+  lat1->DrawLatex(0.33, 0.704, "Dec 3 2018");
+  lat1->DrawLatex(0.76, 0.26, "Mar 19 2019");
+  lat1->DrawLatex(0.76, 0.22, "Apr 7 2019");
+  lat1->DrawLatex(0.76, 0.18, "Apr 12 2019");
+
+  lat1->DrawLatex(0.88, 0.14, "Jan 30 2018");
+  c1->Print("CLAS12_Atten_Measurements.eps");
+  c1->Print("CLAS12_Atten_Measurements.pdf");
+  c1->Print("CLAS12_Atten_Measurements.png");
 
   
 
