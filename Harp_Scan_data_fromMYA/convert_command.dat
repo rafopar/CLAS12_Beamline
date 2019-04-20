@@ -1,0 +1,1 @@
+awk '{$1=$2=""; print $0}' tagger_Harp_Scan_Results.dat | grep -v undef | sort -V | uniq > Tagger_scans_Jan23_18_Apr15_19.da
