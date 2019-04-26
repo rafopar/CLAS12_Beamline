@@ -21,7 +21,7 @@ public :
 // Fixed size dimensions of array or collections stored in the TTree if any.
 
    // Declaration of leaf types
-   Float_t         Date;
+   Long64_t        Date;
    Float_t         IPM2C21A;
    Float_t         IPM2C21A_XPOS;
    Float_t         IPM2C21A_YPOS;
